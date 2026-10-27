@@ -343,6 +343,8 @@ IMP imp_implementationWithBlock(id block)
 			addr |= 1;
 #endif
                         if ( next->block == NULL ) {
+				//  we've run  out of trampolinesi
+                                //  trigger allocation of new ones next time around
 				*setptr = NULL;
                         }
 			return (IMP)addr;
