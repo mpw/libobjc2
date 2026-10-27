@@ -166,6 +166,7 @@ static int trampoline_page_size;
  * Calculated in init_trampolines after retrieving the current page size:
  */
 static size_t trampoline_header_per_page;
+static size_t trampoline_headers_total;
 /*
  * Size of a trampoline region in bytes.
  */
@@ -219,6 +220,7 @@ PRIVATE void init_trampolines(void)
 
 	trampoline_region_size = trampoline_page_size * TRAMPOLINE_REGION_PAGES;
 	trampoline_header_per_page = trampoline_page_size / sizeof(struct block_header);
+	trampoline_headers_total = trampoline_region_size / sizeof(struct block_header);
 
 	// Check that sizeof(struct block_header) is a divisor of the current page size
 	assert(trampoline_header_per_page * sizeof(struct block_header) == trampoline_page_size);
